@@ -1,0 +1,22 @@
+---
+import Social from './Social.astro';
+const linkedin = "linkedin";
+const usernameLinkedin = "mayra-cortinez-"
+---
+
+<style>
+    footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+</style>
+
+<footer>
+    <Social platform = "github" username="MayraCortinez" />
+    <Social platform = "facebook" username="MayraCortinez" />
+    <p>
+        ¡Puedes conocer mis avances en  <a href={`https://www.${linkedin}.com/in/${usernameLinkedin}`}>{linkedin}</a>!
+    </p>
+</footer>
