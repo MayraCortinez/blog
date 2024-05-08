@@ -1,5 +1,8 @@
+<!-- Plantilla para las entradas/posts del blog -->
+
 ---
 import BaseLayout from './BaseLayout.astro';
+import {fade} from "astro:transitions";
 const { frontmatter } = Astro.props;
 
 ---
@@ -7,7 +10,7 @@ const { frontmatter } = Astro.props;
 <BaseLayout pageTitle={frontmatter.title}>
     <p>Publicado el: {frontmatter.pubDate.toString().slice(0,10)}</p>
     <p>Escrito por {frontmatter.author}</p>
-    <h2>{frontmatter.description}:</h2>
+    <h2 transition:animate={fade({ duration: '2s' })}> <em>{frontmatter.description}:</em></h2> <!-- Hago que la descripción aparezca lentamente cuando se navega a una entrada de blog, importo la animación fade en la plantilla para las entradas de blog en formato Markdown. Luego, agrego la directiva de transición para el fade de Astro con una duración de 2s -->
     <img src={frontmatter.image.url} width="500px" alt={frontmatter.image.alt}>
 
     <div class="tags">

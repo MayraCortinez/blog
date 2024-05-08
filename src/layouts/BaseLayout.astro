@@ -1,7 +1,12 @@
+<!-- Plantilla de la página -->
+
+
+<!-- Frontmatter -->
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 const {pageTitle} = Astro.props; /* para recibir un título de página a través de Astro.props, constante definida en la página index.astro */
 ---
 
@@ -12,10 +17,11 @@ const {pageTitle} = Astro.props; /* para recibir un título de página a través
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <ViewTransitions />  <!-- agrego el componente de enrutamiento dentro del elemento <head>. -->
   </head>
   <body>
     <Header />
-    <h1>{pageTitle}</h1>
+    <h1 transition:animate="slide">{pageTitle}</h1> <!-- hago que los títulos de las páginas se deslicen en lugar de desvanecerse -->
     <slot /> <!-- Incluirá el contenido envuelto en el layout  -->
     <Footer />
     <script>

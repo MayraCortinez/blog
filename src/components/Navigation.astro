@@ -1,6 +1,50 @@
+
 ---
+const myUpDownAnimation = {
+    forwards: {
+      old: {
+        name: 'fadeOut',
+        duration: '0.2s',
+        easing: 'ease',
+        fillMode: 'forwards',
+      },
+      new: {
+        name: 'upDown',
+        duration: '1s',
+        easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+        fillMode: 'backwards',
+      },
+    },
+    backwards: {
+      old: {
+        name: 'fadeOut',
+        duration: '0.2s',
+        easing: 'ease',
+        fillMode: 'forwards',
+      },
+      new: {
+        name: 'upDown',
+        duration: '1s',
+        easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+        fillMode: 'backwards',
+      },
+    },
+  };
+
 ---
-<div class="nav-links">
+
+<style>
+    @keyframes upDown {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-2px);
+      }
+    }
+  </style>
+
+<div class="nav-links" transition:animate={myUpDownAnimation}> <!-- defino una animación personalizada, que se producirá sobre el elemento al cambiar la página -->
     <a href="/">Inicio</a>
     <a href="/about/">Sobre mí</a>
     <a href="/blog/">Mi blog</a>

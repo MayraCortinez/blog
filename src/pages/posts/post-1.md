@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Mi primera publicación en el blog'
 pubDate: 06-05-2024
-description: 'Este es la primera publicación de mi nuevo blog Astro.'
+description: 'Este es la primera publicación de mi nuevo blog Astro'
 author: 'Cortinez Mayra'
 image:
     url: 'https://docs.astro.build/assets/full-logo-light.png'
