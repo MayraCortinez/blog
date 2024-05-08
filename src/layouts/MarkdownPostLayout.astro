@@ -1,12 +1,42 @@
 ---
+import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
+
 ---
 
-<h1>{frontmatter.title}</h1>
-<p>Publicado el: {frontmatter.pubDate.toString().slice(0,10)}</p>
-<p>Escrito por {frontmatter.author}</p>
-<h2>{frontmatter.description}:</h2>
-<img style="width: 500px;" src={frontmatter.image.url} alt={frontmatter.image.alt}>
-<p>Temas: {frontmatter.tags}</p>
+<BaseLayout pageTitle={frontmatter.title}>
+    <p>Publicado el: {frontmatter.pubDate.toString().slice(0,10)}</p>
+    <p>Escrito por {frontmatter.author}</p>
+    <h2>{frontmatter.description}:</h2>
+    <img src={frontmatter.image.url} width="500px" alt={frontmatter.image.alt}>
 
-<slot />
+    <div class="tags">
+        {frontmatter.tags.map((tag) => ( /* Para utilizar props (valores pasados) de una entrada de blog .md en la plantilla, como etiquetas, necesitas agregar un prefijo especial al valor. */
+            <p class="tag">
+                <a href={`/tags/${tag}`}>{tag}</a>
+            </p>
+        ))}
+    </div>
+
+    <slot />
+</BaseLayout>
+
+<style>
+    a {
+      color: #00539F;
+    }
+  
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .tag {
+      margin: 0.25em;
+      border: dotted 1px #a1a1a1;
+      border-radius: .5em;
+      padding: .5em 1em;
+      font-size: 1.15em;
+      background-color: #F8FCFD;
+    }
+  </style>
